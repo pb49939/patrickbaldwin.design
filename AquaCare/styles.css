@@ -1,0 +1,387 @@
+html{
+	background: url('fish-background4.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.wrapper-top-todo{
+	display: grid;
+	grid-template-columns: 100%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 15%;
+}
+
+.wrapper-top-todo > div{
+	
+	padding: 1em;
+	height: 15%;
+
+}
+
+.wrapper-todo{
+	display: grid;
+	grid-template-columns: 48% 4% 48%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 70%;
+}
+
+.wrapper-todo > div{
+	
+	padding: 1em;
+	border-radius: 5px;
+	border-color: #A05FEE;
+	
+
+}
+
+
+
+.button-wrapper-todo{
+	display: grid;
+	grid-template-columns: 100%;
+	grid-column-gap: 5em;
+	grid-row-gap: 1em;
+	margin-left: 15%;
+	margin-right: 15%;
+	text-align: center;
+	
+}
+
+
+.button-wrapper-todo > div{
+	padding: 1em;
+	border-radius: 5px;
+	border: 1px solid #A05FEE;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #fff;
+    font-size: 100%;
+    line-height: 16px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    vertical-align: middle;
+	
+}
+
+.line{
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid #A05FEE;
+}
+
+.button-wrapper-todo > div:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #3126D3;
+}
+
+.wrapper-bottom-todo{
+	display: grid;
+	grid-template-columns: 100%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 15%;
+}
+
+.wrapper-bottom-todo > div{
+	
+	padding: 1em;
+	
+
+}
+
+h1{
+	font-family: 'Julius Sans One', sans-serif;
+	color: #fff;
+	text-shadow: 10px 10px 4px rgab(0, 0, 0, .1);
+	text-transform: uppercase;
+	font-weight: lighter;
+	margin-bottom: -5px;
+}
+
+.swal-modal {
+  background-color: #fff;
+  
+}
+
+.swal-title {
+  margin: 0px;
+  font-size: 16px;
+  margin-bottom: 28px;
+  color: #050F35;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.swal-text {
+  padding: 17px;
+  display: block;
+  margin: 22px;
+  text-align: center;
+  color: #050F35;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.swal-button {
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #061D59;
+  font-size: 12px;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+
+
+@media (max-width: 2000px){
+.wrapper-top{
+	display: grid;
+	grid-template-columns: 100%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 15%;
+}
+
+.wrapper-top > div{
+	
+	padding: 1em;
+	height: 15%;
+
+}
+
+.wrapper{
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 70%;
+}
+
+.wrapper > div{
+	
+	padding: 1em;
+	border-radius: 5px;
+	border-color: #A05FEE;
+	
+
+}
+
+.button-wrapper{
+	display: grid;
+	grid-template-columns: 90% 10%;
+	grid-column-gap: .25em;
+	
+}
+
+.button-wrapper > div{
+	padding: 1em;
+	border-radius: 5px;
+	border: 1px solid #A05FEE;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #fff;
+    font-size: 100%;
+    line-height: 16px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    vertical-align: middle;
+	
+}
+
+.button-wrapper > div:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #3126D3;
+}
+
+.wrapper-bottom{
+	display: grid;
+	grid-template-columns: 80% 20%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 15%;
+}
+
+.wrapper-bottom > div{
+	
+	padding: 1em;
+	
+
+}
+
+h1{
+	font-family: 'Julius Sans One', sans-serif;
+	color: #fff;
+	text-shadow: 10px 10px 4px rgab(0, 0, 0, .1);
+	text-transform: uppercase;
+	font-weight: lighter;
+}
+
+	
+}
+
+@media (max-width: 1000px){
+
+.wrapper-top{
+	display: grid;
+	grid-template-columns: 100%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 15%;
+}
+
+.wrapper-top > div{
+	
+	padding: 1em;
+	
+
+}
+
+.wrapper{
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 70%;
+}
+
+.wrapper > div{
+	
+	padding: 1em;
+	border-radius: 5px;
+	border-color: #A05FEE;
+	
+
+}
+
+.button-wrapper{
+	display: grid;
+	grid-template-columns: 90% 10%;
+	grid-column-gap: 1em;
+	grid-row-gap: .5em;
+}
+
+.button-wrapper > div{
+	padding: 1em;
+	border-radius: 5px;
+	border: 1px solid #A05FEE;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #fff;
+    font-size: 100%;
+    line-height: 12px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 15%;
+    vertical-align: middle;
+	
+}
+
+.wrapper-bottom{
+	display: grid;
+	grid-template-columns: 100%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+}
+
+.wrapper-bottom > div{
+	
+	padding: 1em;
+	
+
+}
+
+h1{
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-shadow: 10px 10px 4px rgab(0, 0, 0, .1);
+	text-transform: uppercase;
+	font-weight: lighter;
+	color: #fff;
+}
+
+
+}
+
+
+@media (max-width: 650px){
+
+.wrapper-top{
+	display: grid;
+	grid-template-columns: 100%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 15%;
+}
+
+.wrapper-top > div{
+	
+	padding: 1em;
+	
+
+}
+
+
+.wrapper{
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+	grid-column-gap: 1em;
+	grid-row-gap: .5em;
+	height: 70%;
+}
+
+.wrapper > div{
+	
+	padding: 1em;
+	border-radius: 5px;
+	border-color: #A05FEE
+
+}
+
+.button-wrapper{
+	display: grid;
+	grid-template-columns: 90% 10%;
+	grid-column-gap: 1em;
+	grid-row-gap: .25em;
+}
+
+.button-wrapper > div{
+	padding: 1em;
+	border-radius: 5px;
+	border: 1px solid #A05FEE;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #fff;
+    font-size: 100%;
+    line-height: 10px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    vertical-align: middle;
+	
+}
+
+.wrapper-bottom{
+	display: grid;
+	grid-template-columns: 100%;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	height: 15%;
+}
+
+.wrapper-bottom > div{
+	
+	padding: 1em;
+	
+
+}
+
+h1{
+	font-family: 'Julius Sans One', sans-serif;
+	color: #fff;
+	text-shadow: 10px 10px 4px rgab(0, 0, 0, .1);
+	text-transform: uppercase;
+	font-weight: lighter;
+}
+
+
+}

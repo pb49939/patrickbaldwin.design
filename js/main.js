@@ -68,7 +68,7 @@
     strings: [
       "and I turn coffee into code.",
       "and I turn problems into creative, data driven solutions. ",
-      "and I can make Youtube a better place."
+      "and I can make the development world a better place. "
     ],
     typeSpeed: 0,
     loop: true,

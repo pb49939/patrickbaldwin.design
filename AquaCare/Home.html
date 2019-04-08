@@ -1,0 +1,200 @@
+<html> 
+<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Nanum+Pen+Script|Nunito" rel="stylesheet">
+<style>
+
+.home-outer-div{
+	background-image: url('home-second.jpg');
+	width: 100%;
+	height: 100%;
+	background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#outer-border{
+	border: 2px solid #303C4A;
+	padding: 2px;
+}
+
+.outer-tab-buttons{
+	position: relative;
+	margin-top: 10%;
+	padding: 3%;
+}
+
+.inner-tab-buttons{
+	position: relative;
+	padding: 10px;
+	border: 1px solid #869EB0;
+	height: 30px;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	border-radius: 3px;
+	text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    font-family: 'Julius Sans One', sans-serif;
+    color: #5B7E9F;
+}
+
+.inner-tab-buttons:hover{
+	background-color: #827B4D;
+	color: #303C4A;
+	font-size: 22px;
+}
+
+.outer-name-top{
+	position: relative;
+	font-family: 'Julius Sans One', sans-serif;
+    color: #827B4D;
+    font-size: 95px;
+    text-align: center;
+    vertical-align: middle;
+}
+.outer-name-bottom{
+	position: relative;
+	font-family: 'Julius Sans One', sans-serif;
+    color: #827B4D;
+    font-size: 70px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #303C4A;
+    padding-bottom: 5px;
+}
+
+.test-outer-body{
+	width: 50%;
+	height: 60%;
+	margin-left: 8.5%;
+	top: 0%;
+	position: relative;
+}
+
+.tab-pop-ups{
+	width: = 40%;
+	height: 20%;
+	margin-left: 55%;
+	align-content: center;
+
+	z-index: 10;
+}
+
+.tab-images{
+	width: 100%;
+	height: 4%;
+}
+
+.hide{
+	display: none;
+}
+
+</style>
+<body>
+
+<div id="outer-border"> 
+
+	
+	<div class="home-outer-div"> 
+
+		<div class="tab-pop-ups">
+			<table>
+				<tbody>
+					<tr>
+						<td id="sd-image" style="width: 30%">
+							<img class="hide" style="width: 100%; height: 4%;" src="software-developer.jpg"/>
+						</td>
+						<td id="mS-image" style="width: 20%">
+							<img class="hide" style="width: 100%; height: 4%;" src="music.jpg"/>
+						</td>
+						<td id="pT-image" class="hide" style="width: 20%;">
+							<img style="width: 100%" src="portfolio.jpg"/>
+						</td>
+						<td id="rF-image" class="hide" style="width: 30%">
+							<img style="width: 100%;"" src="references.jpg"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="test-outer-body">
+		
+
+
+
+			<div class="outer-name-top">
+				Patrick R. 
+			</div>
+			<div class="outer-name-bottom">
+				Baldwin
+			</div>
+
+			<div class="outer-tab-buttons">
+
+				<div id="software-developer" class="inner-tab-buttons" onmouseover="show('sD')" onmouseout="hide('sD')" href="login.html" >
+					Software Developer
+					
+				</div>
+				<div class="inner-tab-buttons" onmouseover="show('mS')" onmouseout="hide('mS')">
+					Musician
+				</div>
+				<div class="inner-tab-buttons" onmouseover="show('pT')" onmouseout="hide('pT')">
+					Portfolio
+				</div>
+				<div class="inner-tab-buttons" onmouseover="show('rF')" onmouseout="hide('rF')">
+					References
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+
+<script>
+	function show(tab){
+		if (tab == 'rF'){
+			$("#rF-image").removeClass('hide');
+		}
+		if (tab == 'sD'){
+			$("#sd-image").removeClass('hide');
+		}
+		if (tab == 'mS'){
+			$("#mS-image").removeClass('hide');
+		}
+		if (tab == 'pT'){
+			$("#pT-image").removeClass('hide');
+		}
+	}
+
+	function hide(tab){
+		if (tab == 'rF'){
+			$("#rF-image").addClass('hide');
+		}
+		if (tab == 'sD'){
+			$("#sd-image").addClass('hide');
+		}
+		if (tab == 'mS'){
+			$("#mS-image").addClass('hide');
+		}
+		if (tab == 'pT'){
+			$("#pT-image").addClass('hide');
+		}
+	}
+</script>
+
+</body>
+
+
+</html>
