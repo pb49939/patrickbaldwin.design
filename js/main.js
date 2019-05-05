@@ -112,12 +112,32 @@
     $(".menu-item.about").addClass("active");
   });
   //On Click Open Portfolio Block
-  $(".portfolio-block, .menu-item.portfolio").on("click", function() {
+  $(".portfolio-block, .menu-item.portfolio, .close-portfolio-detail").on(
+    "click",
+    function() {
+      $(".content-blocks").removeClass("showx");
+      $(".content-blocks.portfolio").addClass("showx");
+      $(".menu-item").removeClass("active");
+      $(".menu-item.portfolio").addClass("active");
+    }
+  );
+
+  //On Click Open Session Sanctum Writeup
+  $(".open-session-sanctum").on("click", function() {
     $(".content-blocks").removeClass("showx");
-    $(".content-blocks.portfolio").addClass("showx");
+    $(".content-blocks.session-sanctum").addClass("showx");
     $(".menu-item").removeClass("active");
-    $(".menu-item.portfolio").addClass("active");
+    $(".menu-item.session-sanctum").addClass("active");
   });
+
+  //On Click Fraternity Site Writeup
+  $(".open-asp").on("click", function() {
+    $(".content-blocks").removeClass("showx");
+    $(".content-blocks.asp").addClass("showx");
+    $(".menu-item").removeClass("active");
+    $(".menu-item.asp").addClass("active");
+  });
+
   //On Click Open Blog Block
   $(".blog-block, .menu-item.blog").on("click", function() {
     $(".content-blocks").removeClass("showx");
