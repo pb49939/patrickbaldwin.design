@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>#Test Application</title>
+</head>
+<body>
+<h1>Theory of Comp, Lecture 1</h1>
+
+<h2>Intro &amp; Proof Techniques</h2>
+
+<p>Professor: <strong>Laszlo Liptak</strong> Office 368 MSC<br/>
+liptak@oakland.edu<br/>
+Attendance is taken<br/>
+Access to video recording of all lectures<br/>
+Notes will be scanned and uploaded after lectures<br/>
+Textbook: <strong>Introduction to Languages and the Theory of Computation</strong>, John C. Martin (Course is 4th edition, but previous editions are acceptable. </p>
+
+<h4>Grades:</h4>
+
+<ul>
+<li>HW Assignments <strong>30%</strong>
+
+<ul>
+<li>Help is acceptable, but cannot be identical to other students</li>
+<li>One attempt is given to resubmit all hw assignments. After that, we can explain proof to prof directly.</li>
+</ul></li>
+<li>As we progress in the class, Liptak will provide us a list of terms we must be able to explain. We must make an appointment to explain any of these terms to the liptak. He will chose on the spot which. <strong>30%</strong></li>
+<li>Final exam <strong>40%</strong></li>
+</ul>
+
+<h2>Poof Techniques</h2>
+
+<h4>Quantified Statements:</h4>
+
+<p><em>For all x, Px is true</em> (Universal Quantifier)<br/>
+ex: Every swan is white.<br/>
+ex: The square of an even number is even. </p>
+
+<p><em>There exists an x much that P(x) is true</em> (Existential Quantifier) </p>
+
+<p><strong>For all x, P(x) is true for every P(x)</strong></p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>To show it is true</th>
+	<th>To show it is false</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>Pick a fixed, arbitrary value of x from the domain and show that p(x) is true using a general argument independent of x.</td>
+	<td>Find a counter example that is a specific value of x for which P(x) is false.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>There exists an x such that P(x) is true.</strong></p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>To show it is true</th>
+	<th>To show it is false</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>Find a specific value of x for which P(x) is true.</td>
+	<td>Pick a fixed, arbitrary value of x from the domain and show that p(x) is false using a general argument independent of x.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Proof Methods to show that P -&gt; Q</h4>
+
+<p><em>P = Assumption, Q = Conclusion</em></p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>P</th>
+	<th>Q</th>
+	<th>P -&gt; Q</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>T</td>
+	<td>T</td>
+	<td>T</td>
+</tr>
+<tr>
+	<td>T</td>
+	<td>F</td>
+	<td>F</td>
+</tr>
+<tr>
+	<td>F</td>
+	<td>T</td>
+	<td>T</td>
+</tr>
+<tr>
+	<td>F</td>
+	<td>F</td>
+	<td>T</td>
+</tr>
+</tbody>
+</table>
+
+<p>ex. Promise: If it is Sunday,I will study for CSI 3430.
+We break our promise if: it is Sunday, and I am not studying for CIS 3430. </p>
+
+<p><strong>To show that P !-&gt; Q</strong><br/>
+1. . <strong>Direct Proof:</strong> Assume that P is true, show that Q is also true.
+2. <strong>Contropositive Proof:</strong> Assume that Q is false, show that P is also false.
+3. <strong>Contradiction (Indirect Proof):</strong> Assume that P is true, and Q is false. Show a contradiction (an always false statement) that is a result of making this assumption. This is the preferred method as it lets us assume the most to allow us to get further in the proof.
+4. <strong>Induction:</strong> can be used if the statement depends on a subset of natural numbers.<br/>
+5. <strong>Strong Induction:</strong>
+ 1. Base case, P(0)
+ 2. Show for all n in the domain, P(n+1) is also true<br/>
+ Direct proof: Assume P(0), P(1), .... P(n) are true. Show that P(n+1) are true </p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>ex</th>
+	<th>1<sup>2</sup> + 2<sup>2</sup> + ... + n<sup>2</sup> = [n(n+1)(2n+1)]/6</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>P(0) is true (Base case, replace 0 with smaller element of domain)</td>
+	<td>n = 1, 1 = [1(1 + 1)(2 + 1)]/6 = 1 <em>CHECK</em></td>
+</tr>
+<tr>
+	<td>Pick an arbitrary n &gt;= 1. Assume that 1<sup>2</sup> + 2<sup>2</sup> + ... + n<sup>2</sup> = [n(n+1)(2n+1)]/6. <strong>(Induction Hypothesis)</strong></td>
+	<td>Assume that the statement holds for something greater than the base case</td>
+</tr>
+<tr>
+	<td>WTS:</td>
+</tr>
+<tr>
+	<td>1<sup>2</sup> + 2<sup>2</sup> + ... + n<sup>2</sup> + (n + 1)^2 = [(n+1)(n+2)(2(n+1)+1))]/6</td>
+	<td>Prove that each &quot;rung on the ladder&quot; is valid by proving n+1 is still true</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Expectations</h3>
+
+<p>know all definitions, main theorems and their justification, and are able to perform the algorithm we discuss and solve problems similar to the ones on the HW. </p>
+
+<h3>Relations, Equivalence Relation</h3>
+
+<p>(: = the left and the right side have same value) </p>
+
+<p>Definition: Given sets A,B, their cartesian Product in<br/>
+ A x B: = {(a, b): a in A, b in B} (Set of all ordered pairs that can be formed from A and B)</p>
+
+<p>A relation R, from A to B is an arbitrary subset of A x B. </p>
+
+<p>If A = B, R is also called a relation on A. </p>
+
+<p>ex 1. A = {42, 8, 6, 9} </p>
+
+<p>R = {(8, 6), (8, 9), (6, 9), (42, 42), (6, 8)}</p>
+
+<p>ex 2.
+ A = {6, 8, 9, 42}</p>
+
+<p>&lt; = {(6, 9), (6, 42), (8, 9), (8, 42), (9, 42)}</p>
+
+<p>we usually write: 6 &lt; 8<br/>
+ usually we can write aRb to mean (a, b) is in R. </p>
+
+<p>ex 3: = on A = {(6, 6), (8, 8), (9, 9), (42, 42)}<br/>
+ ex 4: congruence modulo 3 on A {(6, 6), (6, 9), (6, 42), (8, 8), (9, 6), (9, 9), (9, 42), (42, 6),(42, 9), (42, 42)}<br/>
+ <strong>Definition:</strong> Two integers are congruent modulo m if their difference is a multiple of m. </p>
+
+<h3>Potential Properties that relations on a set, A may have</h3>
+
+<p><strong>Definition:</strong> A relation R on A is equivalence relation iff R<br/>
+1. Reflexive (For all a in A, aRa) AND<br/>
+2. Symmetric (For all a,b in A aRb -&gt; bRa) AND<br/>
+3. Transitive (For all a,b,c in A: (aRb &amp;&amp; bRc) -&gt; aRc)</p>
+
+<p><strong>Exercise:</strong> Check which of the four examples we did in class are equivalence relations. (3 and 4 are equivalence relations) </p>
+
+<p>Let R be an equivalence relation on A, and a in A. The equivalence class of a is the set [a]r := {b in A: aRb} ([a]r = set of elements in A that a is in relation with)</p>
+
+<p>ex. Congruence Modulo 3 on N </p>
+
+<p>[0] = {0, 3, 6, 9, 12,...} (3k)<br/>
+[1] = {1, 4, 7, 10, 13,...} (3k + 1)<br/>
+[2] = {2, 5, 8, 11, 14,...} (3k + 2) </p>
+
+<p><strong>Theorom:</strong> If a relation is an equivalence relation on A, then the set of equivalence classes with respect to the relation forms a <em>partition</em> of A, and the two elements of A are in relation with respect to the relation if and only if they belong to the same set of the partitions. </p>
+
+<p>A partition of set a is a set of subsets of A such that each element of A belongs to exactly one such subset. </p>
+
+<p>Claim: {[a]tilda : a in A} for a </p>
+
+<p>What to Show
+1. Each element belongs to exactly one equivalence class<br/>
+2. Two elements are in relation iff they belong to the same equivalence class. </p>
+
+<p>To show #1, we show that
+- Each element belongs to at least one class. Since a in relation with a (reflexive), a in [a] tilda.<br/>
+- No element belongs to two different equivalence classes. We show that if two equivalence classes share an element, then they are equal. </p>
+
+<p><strong>PROOF</strong><br/>
+Assume that c belongs to both [a] and [b] (equivalence class of a and equivalence class of b). </p>
+
+<p><em>What to show</em><br/>
+[a] = [b] is the same as [a] is a subset of [b] and [b] is a subset of [a].<br/>
+<strong>Ugly Proof</strong><br/>
+To show [a] is a subset of [b] we need to show that for any d in [a], we have a d in [b]. To Show, we assume d in [b] and show d is in [b]. Assumptions: c in [a], c in [b], d in [a]. By definition, A is in relation c, b is in relation with c, and a is in relation with d. What to show: d belongs to [b] is equivalent to b being in relation with d. We know that b is in relation with c, c is in relation with a, and a is in relation with d. B is in relation with a, and a is in relation with d. Conclusion, b is in relation with d. </p>
+
+<p><strong>Actual Proof</strong>
+Assume that c belongs to [a], [b].<br/>
+Pick any element d of [a].<br/>
+Since c belongs to [b], b is in relation with c.<br/>
+Since c also belongs to [a], a is in relation with c.<br/>
+Since the relation is symmetric, this implies that c is in relation with a.<br/>
+Since b is in relation with c and c is in relation with a, by transitivity of the relation -&gt;<br/>
+We get that b is in relation with a.
+Since d belongs to [a], we have that a is in relation to d.<br/>
+Since b is in relation with a and a is in relation with d, by transitivity of the relation, we get that b is in relation with d. </p>
+
+<p>To show that [b] is a subset of [a], use the same argument with the roles of a, b reversed (by symmetry). </p>
+
+<p>So the set of equivalence classes form a partition of A. </p>
+
+<p>Two elements a, b are in the same equivalence class iff a is in relation to b. </p>
+
+<p>Assume that a,b belong to [c], then [a], [c] share an element (a), so [a] = [c]. Similarly, [b], [c] share an element (b) so [b] = [c]. Due to transitivity, [a] = [b] = [c], and contain a, b, c. </p>
+
+<p>Assume that a is in relation with b. Assume that b belongs to [a] then [b] and [a] share en element (b), so [b] = [a]. </p>
+
+<h3>Suggested Exercises: Ch 1: 4-6, 8, 11, 12, 14, 19, 20, 22, 26, 29, 31-37, 42, 44.</h3>
+
+<h2>Strings (Languages)</h2>
+
+<p><strong>Def:</strong> An Alphabet is a finite, non-empty set of symbols usually denoted by Sigma, Gamma. </p>
+
+<p><strong>String:</strong> finite sequence of symbols from the alphabet written one after another. Usually denoted by v,w,x,y,z. </p>
+
+<p>ex. Sigma = {a, b, c} </p>
+
+<p>strings over Sigma: abc, a, emptyString, abcc, bab, bacbc </p>
+
+<p>Length of a string is just the number of symbols in the string (with multiplicity). We use &quot;| |&quot; to denote length.<br/>
+ex. |abc| = 3, |emptyString| = 0, |baba| = 4 </p>
+
+<p>The set of all finite strings over the alphabet Sigma, is denoted by Simga Star. </p>
+
+<p><strong>Operations that we can do on strings</strong>:<br/>
+<em>Concatenation:</em> Write the second string after the first string to get a new string. Write * for the concat operation (usually omitted).<br/>
+ex. w = cab, z = abc<br/>
+w<em>z = cababc<br/>
+z</em>w = abccab (<em>concat is usually not combinative</em>)<br/>
+w*w = cabcab </p>
+</body>
+</html>
