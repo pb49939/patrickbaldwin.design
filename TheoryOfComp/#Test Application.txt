@@ -1,0 +1,251 @@
+# Theory of Comp, Lecture 1 
+## Intro & Proof Techniques
+
+Professor: **Laszlo Liptak** Office 368 MSC  
+liptak@oakland.edu  
+Attendance is taken  
+Access to video recording of all lectures  
+Notes will be scanned and uploaded after lectures  
+Textbook: **Introduction to Languages and the Theory of Computation**, John C. Martin (Course is 4th edition, but previous editions are acceptable. 
+
+#### Grades:  
+  
+
+  - HW Assignments **30%**  
+	  - Help is acceptable, but cannot be identical to other students 
+	  - One attempt is given to resubmit all hw assignments. After that, we can explain proof to prof directly. 
+  - As we progress in the class, Liptak will provide us a list of terms we must be able to explain. We must make an appointment to explain any of these terms to the liptak. He will chose on the spot which. **30%**   
+  - Final exam **40%**  
+
+## Poof Techniques
+
+#### Quantified Statements:   
+*For all x, Px is true* (Universal Quantifier)  
+ex: Every swan is white.  
+ex: The square of an even number is even.  
+
+*There exists an x much that P(x) is true* (Existential Quantifier)   
+
+**For all x, P(x) is true for every P(x)**
+
+| To show it is true | To show it is false |
+| ------ | ------ |
+| Pick a fixed, arbitrary value of x from the domain and show that p(x) is true using a general argument independent of x. | Find a counter example that is a specific value of x for which P(x) is false. |
+
+**There exists an x such that P(x) is true.**
+
+| To show it is true | To show it is false |
+| ------ | ------ |
+| Find a specific value of x for which P(x) is true. | Pick a fixed, arbitrary value of x from the domain and show that p(x) is false using a general argument independent of x. |
+
+
+#### Proof Methods to show that P -> Q   
+*P = Assumption, Q = Conclusion*
+
+| P | Q | P -> Q | 
+| --- | --- | --- | 
+| T | T | T |
+| T | F | F | 
+| F | T | T | 
+| F | F | T |    
+
+ex. Promise: If it is Sunday,I will study for CSI 3430. 
+We break our promise if: it is Sunday, and I am not studying for CIS 3430.  
+
+**To show that P !-> Q**  
+1. . **Direct Proof:** Assume that P is true, show that Q is also true. 
+2. **Contropositive Proof:** Assume that Q is false, show that P is also false. 
+3. **Contradiction (Indirect Proof):** Assume that P is true, and Q is false. Show a contradiction (an always false statement) that is a result of making this assumption. This is the preferred method as it lets us assume the most to allow us to get further in the proof. 
+4. **Induction:** can be used if the statement depends on a subset of natural numbers.  
+5. **Strong Induction:** 
+   1. Base case, P(0)
+   2. Show for all n in the domain, P(n+1) is also true  
+   Direct proof: Assume P(0), P(1), .... P(n) are true. Show that P(n+1) are true 
+
+
+
+| ex | 1^2 + 2^2 + ... + n^2 = [n(n+1)(2n+1)]/6 |   
+| --- | --- | 
+| P(0) is true (Base case, replace 0 with smaller element of domain) | n = 1, 1 = [1(1 + 1)(2 + 1)]/6 = 1 *CHECK* |
+| Pick an arbitrary n >= 1. Assume that 1^2 + 2^2 + ... + n^2 = [n(n+1)(2n+1)]/6. **(Induction Hypothesis)** | Assume that the statement holds for something greater than the base case | 
+| WTS:  
+ 1^2 + 2^2 + ... + n^2 + (n + 1)^2 = [(n+1)(n+2)(2(n+1)+1))]/6 |  Prove that each "rung on the ladder" is valid by proving n+1 is still true |
+ 
+ 
+ ### Expectations 
+ know all definitions, main theorems and their justification, and are able to perform the algorithm we discuss and solve problems similar to the ones on the HW. 
+ 
+ 
+ ### Relations, Equivalence Relation  
+ 
+ (: = the left and the right side have same value)  
+ 
+ Definition: Given sets A,B, their cartesian Product in  
+ A x B: = {(a, b): a in A, b in B} (Set of all ordered pairs that can be formed from A and B)
+ 
+ A relation R, from A to B is an arbitrary subset of A x B. 
+ 
+ If A = B, R is also called a relation on A. 
+ 
+ ex 1. A = {42, 8, 6, 9} 
+ 
+ R = {(8, 6), (8, 9), (6, 9), (42, 42), (6, 8)}
+ 
+ ex 2. 
+ A = {6, 8, 9, 42}
+ 
+ < = {(6, 9), (6, 42), (8, 9), (8, 42), (9, 42)}
+ 
+ we usually write: 6 < 8   
+ usually we can write aRb to mean (a, b) is in R.  
+ 
+ ex 3: = on A = {(6, 6), (8, 8), (9, 9), (42, 42)}  
+ ex 4: congruence modulo 3 on A {(6, 6), (6, 9), (6, 42), (8, 8), (9, 6), (9, 9), (9, 42), (42, 6),(42, 9), (42, 42)}  
+ **Definition:** Two integers are congruent modulo m if their difference is a multiple of m. 
+ 
+ ### Potential Properties that relations on a set, A may have
+ 
+ **Definition:** A relation R on A is equivalence relation iff R     
+1. Reflexive (For all a in A, aRa) AND   
+2. Symmetric (For all a,b in A aRb -> bRa) AND   
+3. Transitive  (For all a,b,c in A: (aRb && bRc) -> aRc)
+
+**Exercise:** Check which of the four examples we did in class are equivalence relations.  (3 and 4 are equivalence relations)  
+
+Let R be an equivalence relation on A, and a in A. The equivalence class of a is the set [a]r := {b in A: aRb} ([a]r = set of elements in A that a is in relation with)
+
+ex. Congruence Modulo 3 on N 
+
+[0] = {0, 3, 6, 9, 12,...}  (3k)  
+[1] = {1, 4, 7, 10, 13,...} (3k + 1)  
+[2] = {2, 5, 8, 11, 14,...} (3k + 2)   
+
+
+**Theorom:**  If a relation is an equivalence relation on A, then the set of equivalence classes with respect to the relation forms a *partition* of A, and the two elements of A are in relation with respect to the relation if and only if they belong to the same set of the partitions.   
+
+A partition of set a is a set of subsets of A such that each element of A belongs to exactly one such subset. 
+
+Claim: {[a]tilda : a in A} for a 
+
+What to Show 
+1. Each element belongs to exactly one equivalence class  
+2. Two elements are in relation iff they belong to the same equivalence class.  
+
+To show #1, we show that 
+- Each element belongs to at least one class. Since a in relation with a (reflexive), a in [a] tilda.   
+- No element belongs to two different equivalence classes. We show that if two equivalence classes share an element, then they are equal. 
+
+**PROOF**  
+Assume that c belongs to both [a] and [b] (equivalence class of a and equivalence class of b). 
+
+*What to show*  
+[a] = [b] is the same as [a] is a subset of [b] and [b] is a subset of [a].   
+**Ugly Proof**  
+To show [a] is a subset of [b] we need to show that for any d in [a], we have a d in [b]. To Show, we assume d in [b] and show d is in [b]. Assumptions: c in [a], c in [b], d in [a]. By definition, A is in relation c, b is in relation with c, and a is in relation with d. What to show: d belongs to [b] is equivalent to b being in relation with d. We know that b is in relation with c, c is in relation with a, and a is in relation with d. B is in relation with a, and a is in relation with d. Conclusion, b is in relation with d.   
+
+**Actual Proof**
+Assume that c belongs to [a], [b].   
+Pick any element d of [a].   
+Since c belongs to [b], b is in relation with c.  
+Since c also belongs to [a], a is in relation with c.  
+Since the relation is symmetric, this implies that c is in relation with a.  
+Since b is in relation with c and c is in relation with a, by transitivity of the relation ->   
+We get that b is in relation with a. 
+Since d belongs to [a], we have that a is in relation to d.  
+Since b is in relation with a and a is in relation with d, by transitivity of the relation, we get that b is in relation with d.   
+
+To show that [b] is a subset of [a], use the same argument with the roles of a, b reversed (by symmetry).  
+
+So the set of equivalence classes form a partition of A.   
+
+Two elements a, b are in the same equivalence class iff a is in relation to b.   
+
+Assume that a,b belong to [c], then [a], [c] share an element (a), so [a] = [c]. Similarly, [b], [c] share an element (b) so [b] = [c]. Due to transitivity, [a] = [b] = [c], and contain a, b, c. 
+
+Assume that a is in relation with b. Assume that b belongs to [a] then [b] and [a] share en element (b), so [b] = [a]. 
+
+
+
+
+## Strings (Languages)  
+**Def:** An Alphabet is a finite, non-empty set of symbols usually denoted by Sigma, Gamma.  
+
+**String:** finite sequence of symbols from the alphabet written one after another. Usually denoted by v,w,x,y,z.  
+
+ex. Sigma = {a, b, c}  
+
+strings over Sigma: abc, a, emptyString, abcc, bab, bacbc  
+
+Length of a string is just the number of symbols in the string (with multiplicity). We use "| |" to denote length.  
+ex. |abc| = 3, |emptyString| = 0, |baba| = 4  
+
+The set of all finite strings over the alphabet Sigma, is denoted by Simga Star.   
+
+**Operations that we can do on strings**:    
+*Concatenation:* Write the second string after the first string to get a new string. Write * for the concat operation (usually omitted).   
+ex. w = cab, z = abc   
+w*z = cababc  
+z*w = abccab  (*concat is usually not combinative*)    
+w*w = cabcab 
+
+### Logic Symbols 
+From some website: 
+![Logic Symbols](https://patrickbaldwin.design/theoryofcomp/images/logic-symbols.png "Logic Symbols") 
+
+
+### Suggested Exercises: Ch 1: 4-6, 8, 11, 12, 14, 19, 20, 22, 26, 29, 31-37, 42, 44. 
+
+- **1.4** A tautology is two ways to say the same thing, even though they might look different. 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+
+
+
+
+
+
+
+ 
+
+ 
+ 
+
+
+
+
+
