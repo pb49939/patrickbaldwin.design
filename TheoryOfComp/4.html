@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Lecture 4</title>
+</head>
+<body>
+<h1>Lecture 4</h1>
+
+<h2>My appointment is Monday, May 20th @ 11AM - 11:15AM in Liptak's office 368 MSC</h2>
+
+<h2>Decision Problems For Finite Automaton <em>question with a yes/ no answer</em></h2>
+
+<h3>Question 1: Given a FA M, is L(M) empty?</h3>
+
+<p>We need to test if there is a string that will cause M to end up in an accepting state. It is sufficient to find all states that are reachable from the starting state and then decide whether or not it contains an accepting state. To find reachable states recursively:<br/>
+1. the starting state is reachable (q0)<br/>
+2. if q is a reachable state, for every a in Sigma, delta(q, a) is also reachable<br/>
+3. Only states can be obtained using the first bullets finitely many times are reachable </p>
+
+<p>Q0 = {q0}<br/>
+Q1 = {set of states reachable from q0 in 1 move}<br/>
+Q2 = {set of states reachable from states in Q1 in q move}<br/>
+Qn = {set of states reachable from states in Q(n-1) in 1 move </p>
+
+<p>Q1 is subset of Q2 is subset of Q3 ....... is subset of Qn </p>
+
+<p>We can stop when when Q(n-1) = Qn because from that point on, we will have that Qn = Q(n+1) = Q(n+.....) </p>
+
+<h3>Question 2: Given a FA M, L(M) finite?</h3>
+
+<p>Using the Pumping Lemma: if L(M) is infinite, then M accepts a string that is at least as long as its # of states (there are only finitely many shorter strings). </p>
+
+<p>Let M have n states. From the string in L(M) having length at least n, we can find a string in L(M) of length between n and 2n. If the original string is longer, use the Pumping Lemma to remove the middle piece (v) until the length becomes less than 2(n+1). Since each time |v| &lt;= n, the length of the remaining string is still at least n. So to answer the question, test every string of length between n and 2n. If at least one such string is accepted by M, then by Pumping Lemma, M accepts infinitely many strings. If no such string is accepted by M, then L(M) is finite (no longer string will be accepted either). </p>
+
+<h3>Question 3: Given a FA M, accepting L(M) with n states, can we find a FA M' that accepts the same language L(M') = L(M) and has fewer states.</h3>
+
+<p><strong>Recall:</strong> Given a language L over Alphabet, Sigma, two strings x, y are L-indistinguishable iff for every string x in Sigma * , either both xz and yz are in the language, <strong>or</strong> neither of them. </p>
+
+<p><strong>Theorem 1</strong> </p>
+
+<p>Let iL be the L-indistinguishable relation on Sigma *. (x iL y iff x and y are L-indistinguishable). Then iL is an equivalence relation. We need to show that iL is <em>reflexive, symmetric, and transitive</em>. </p>
+
+<ul>
+<li><p><strong>iL is reflexive:</strong> we want to show that for every x, x is in relation with itself (x iL x). We will pick an arbitrary x from Sigma*, either xz, xz is in L or both xz, xz are not in L. This would mean that x is in relation with itself. </p></li>
+<li><p><strong>iL is symetric:</strong> We want to show that for every x, y if x iL y, then y iL x. Assume that x iL y. Then for every z in Sigma, either xz, yz are both in L, or neither xz or xy are in L. To show that y iL x, pick z in Sigma *. From the above, either yz, xz is in L or yz, xz is in L, so y iL x. </p></li>
+<li><p><strong>iL is transitive:</strong> We want to show that for all x, y, z. If x is in relation with y, and y is in relation wit z, then x is in relation with z. We will pick an arbitrary x, y in Sigma . Assume x iL y and y iL z. We know that x and y are L-indistinguishable, [PROP 1] so for any w in Sigma *, either xw and yw are in L, or neither. We also know that y and z are L-indistinguishable, [PROP 2] so for any w in Sigma *, either yw, zw is in L, or either. We need to show that x is L-indistinguishable from z, so for any w in Sigma *, either xw, zw are in L, or neither. Pick an arbitrary W. By [PROP 1], either xw, yw are in L or neither. </p></li>
+</ul>
+
+<p>Case 1: xw, yw are in L. By [PROP 2], since yw is in L, we must have that yw, zw are both in L, so xw, zw, are both in L. </p>
+
+<p>Case 2: xw, yw are both not in L. By [PROP 2], since yw is not in L. We must have that yw, zw are both not in L. So xw, zw are both in in L. </p>
+
+<p>Therefor, since iL is reflexive, symmetric, and transitive, iL is an equivalence relation. This means that iL induces a partition on Sigma *. The sets of this partition are the equivalence classes of iL, formed by strings that are in relation. So x, y belong to the same subset of this partition iff x iL y. </p>
+
+<h2>Theorem:</h2>
+
+<p>Given a language L over a subset of Sigma *, there is a finite automaton M that accepts L (ie. L(M) = L) iff iL has finitely many equivalence classes. </p>
+
+<p><strong>Proof</strong> </p>
+
+<p><em>First Direction</em><br/>
+Assume that there exists an FA M that accepts L. By contradiction, assume that iL has infinitely many equivalence classes. Let M have n states. Pick one string each from n+1 equivalence classes of iL. If they come from different classes, that means that these strings are pairwise L-disinguishable. So by an earlier theorem, any FA accepting L must have at least (n+1) states. This is a contradiction bc L has only n states. </p>
+
+<p><em>Second Direction</em><br/>
+Assume that iL has finitely many equivalence classes ([x] = {y in Sigma * such that x iL y}). We want to show that there is a FA such that L(M) = L. *Idea is to use the equivalence classes as states, and moves will be defined such that we are always in the equivalence class of the string read so far. We accept those equivalence classes that contain strings L. </p>
+
+<p>Define M = {Q, Sigma, q0, A, delta} as follows: </p>
+
+<p>Q: {set of equivalence classes for the relation}<br/>
+q0: [lambda (empty string)]<br/>
+delta: Q * Sigma -&gt; Q: d([x], a) := [xa] for every x and a in Sigma *<br/>
+A: every equivalence class for which x is in the language. </p>
+
+<p>We need to show that 1) this is well-defined ie. def of delta and a does not depend on the choice of x [the rep for the equivalence class] and 2) M accepts L. </p>
+
+<p><strong>First</strong> we will show that A does not depend on the choice of x that is that if [x] = [y], then either x, y are both in L, or x,y are both not in L. </p>
+
+<p>Assume that [x]=[y], that is that x and y are L-indistinguishable (x iL y). Further that for every x in Sigma *, either both xz, yz are in L, or both xz, yz are not in L. </p>
+
+<p>We will choose z to be Lambda (empty string). This means that either both x, y are in L or x, y are both not in L. So they give the same instruction as to if [x] should be included in A (set of accepted states in FA M). </p>
+
+<p><strong>Second</strong> we will show that delta does not depend on the choice of x i.e. if [x]=[y], then d([x], a) = [xa] and d([y], a) = [ya]. </p>
+
+<p>Assume that [x]=[z] iff x iL y (is in relation to y) </p>
+
+<p>So for every x in Z*, either both xz, yz is in L or neither xz, yz is not in L. </p>
+
+<p>Given z' in Sigma*, with z = az'. We get that either xz, yz are both in L or they are both not in L. Further that either xaz', yaw' are both in L or they are both not in L. So for every z', this holds, so xa iL ya so [xa] = [ya]. </p>
+
+<p><strong>Finally:</strong> We will show that M accepts L. </p>
+
+<p>First, we show that delat*([x], y) = [xy] for all strings x, y. </p>
+
+<p>We will use induction on the length of y. Base case is when the length of y is 0 -&gt; y = lambda (empty string). </p>
+
+<p>delta*([x], lambda) = [x] = [x lambda] </p>
+
+<p><strong>IH</strong> Assume that the claim holds whenever |y| = n for some n &gt;= 0. Show it for n+1, let |y| = n + 1. So y = y'a for some y' in Sigma * and some a in Sigma where |y'| = n. Then </p>
+
+<p>delta<em>([a], y) = delta</em>([x], y'a) = delta(delta*([x], y'), a) = by IH = delat([xy'], a) = by definition of delta = [ay'a] = [xy]. </p>
+
+<p>By definition, x in Sigma* is accepted by M iff d*(q0, x) is in A (set of accepting states). </p>
+
+<p>This means that d<em>(q0, x) is in A iff d</em>([lamda], x) is in A. </p>
+
+<p>This means that x is in L iff [x] is in A (set of accepting states). </p>
+
+<p><em>We have proven that if iL has finitely many equivalence classes, then there is a FA that accepts that language. And also that if there is a FA that accepts an equivalence class, then there are finitely many equivalence classes.</em> </p>
+
+<p>This FA, M has the fewest possible states that a FA accepting L can have. </p>
+
+<h2>Question: Given a FA M accepting L, how can we find a FA M' that also accepts L and has the fewest number of states?</h2>
+
+<p>Assume that M = {Q, Sigma, q0, A, delta} is given. Define Lq := {x in Sigma * such that d*(q0, x) = q}. </p>
+
+<p>Each x in Sigma * belongs to exactly one of these sites, namely L d<em>(q0, x). So Lq such that q is in Q is a partition of Sigma <em>. We also know that if d</em>(q0, x) = d</em>(q0, y) -&gt; x and y are L-indistinguishable. So if x is in relation y, x and y will have the same equivalence class. This also means that Lq is an acceptable partition of Sigma * with less states. </p>
+
+<p>So to minimize the number of states, we need to <em>merge</em> those states that are in the same equivalence class of the iL. </p>
+
+<p>Instead we find those pairs of states that can't be merged bc these belong to different equivalence classes of iL. Belonging to two different equivalence classes means that the strings that lead to two different states are L-indistinguishable. </p>
+
+<p><em>x, y are L-dinstinguishable if there exists a string z such that exactly one of xz, yz is in L.</em> </p>
+
+<p>First, we can find reachable states and discard non-reachable states. Then from reachable states, we want to find which pairs have the property that for some string z in Sigma* from one state t, we get to an accepting state but we do not get to an accepting state from another state p. </p>
+
+<p>To do this recursively, </p>
+
+<p>1) (z = lambda) a pair p, q is such if exactly one pair of p,q is accepting.<br/>
+2) (z = ya) if p', q' is such a pair and d(p, a) = p' and d(q, a) = q' for some s in Sigma, then (p, q) is also such a pair. </p>
+
+<p>We can stop doing this algorithm when a new iteration does not give us a new pair, p, q. </p>
+
+<h2>Example: Recall FA that accepts {a, b}* that end in ba</h2>
+
+<p>Which pair of states cannot be merged? <strong>I gotta look at the profs notes for this one, there is no way that I can draw it</strong> </p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+<col/>
+<col/>
+<col/>
+<col/>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>#</th>
+	<th>1</th>
+	<th>2</th>
+	<th>3</th>
+	<th>4</th>
+	<th>5</th>
+	<th>6</th>
+	<th>7</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>1</td>
+	<td>#</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>(1)</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>2</td>
+	<td>N</td>
+	<td>#</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>(1)</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>3</td>
+	<td>N</td>
+	<td>N</td>
+	<td>#</td>
+	<td>N</td>
+	<td>N</td>
+	<td>(1)</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>#</td>
+	<td>N</td>
+	<td>(1)</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>5</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>#</td>
+	<td>(1)</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>6</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>#</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>7</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>N</td>
+	<td>(1)</td>
+	<td>#</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Regular languages and expressions</h2>
+
+<p>Q: What languages can be obtained from simple (empty language, language consisting of only the empty string, language consisting of one string consisting of one symbol) languages using our set operations. </p>
+
+<p>1) just use concatenation of two such languages finitely many times. We will always have just 1 element, which can be any string except the empty string. </p>
+
+<p>2) just use union of two such languages finitely many times </p>
+
+<p>3) use the * operation:<br/>
+L* := L_0 U L_1 U L_2 U L_3 .... U L_n U ...<br/>
+L* = lambda U L U LL U LLL U ..... LLLLL....n....LLLLL </p>
+
+<p>The languages that we can get using these three operations (concatenation or union of two languages, *) from the simple languages (empty language, language consisting of only the empty string, language consisting of one string consisting of one symbol) are called regular languages. </p>
+
+<p>For a regular language given by these operations we can assign a corresponding regular expression by the following: omit {} and replace U with + . </p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>Language</th>
+	<th>Regular Expression</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>empty string</td>
+	<td>empty string</td>
+</tr>
+<tr>
+	<td>{a}</td>
+	<td>a</td>
+</tr>
+<tr>
+	<td>{a}{b}</td>
+	<td>ab</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Next:</strong> Goal is to show that the set of languages that can be accepted by a finite automaton are the regular languages. </p>
+
+<h2>Nondeterministic FA (NFA)</h2>
+
+<p>*expand the notion of finite automaton by allowing the machine to have several (or even no) moves corresponding to reading the next input symbol, and even moves when no part of the input is read (lambda transition). As input string is read, we may make choices about which move to make if more than one move is available to us. Some of these choices may lead to an accepting state after the whole input is read, some may not. We accept the string if some do. </p>
+</body>
+</html>
