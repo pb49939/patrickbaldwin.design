@@ -138,6 +138,14 @@
     $(".menu-item.asp").addClass("active");
   });
 
+  //On Click hd
+  $(".open-hd").on("click", function() {
+    $(".content-blocks").removeClass("showx");
+    $(".content-blocks.hd").addClass("showx");
+    $(".menu-item").removeClass("active");
+    $(".menu-item.hd").addClass("active");
+  });
+
   //On Click Open Blog Block
   $(".blog-block, .menu-item.blog").on("click", function() {
     $(".content-blocks").removeClass("showx");
